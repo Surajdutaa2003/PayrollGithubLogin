@@ -1,5 +1,5 @@
 import dotenv from "dotenv";
-dotenv.config(); // Load environment variables
+dotenv.config(); 
 
 import express from "express";
 import passport from "passport";
@@ -7,7 +7,6 @@ import session from "express-session";
 import cors from "cors";
 import { Strategy as GitHubStrategy } from "passport-github2";
 
-// Debugging environment variables
 console.log("GitHub Client ID:", process.env.GITHUB_CLIENT_ID);
 console.log("GitHub Client Secret:", process.env.GITHUB_CLIENT_SECRET);
 
@@ -17,7 +16,7 @@ app.use(session({ secret: "random_secret", resave: false, saveUninitialized: fal
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Configure GitHub OAuth strategy
+
 passport.use(
   new GitHubStrategy(
     {
@@ -39,7 +38,7 @@ passport.deserializeUser((obj, done) => {
   done(null, obj);
 });
 
-// GitHub Auth Routes
+
 app.get("/auth/github", passport.authenticate("github", { scope: ["user:email"] }));
 
 app.get(
@@ -48,14 +47,14 @@ app.get(
   (req, res) => {
     const user = {
       id: req.user.id,
-      name: req.user.username, // Using 'name' to match Google structure
+      name: req.user.username, 
       avatar: req.user.photos[0].value,
     };
-    console.log("User object to send:", user); // Log what we're sending
+    console.log("User object to send:", user); 
     const queryString = new URLSearchParams(user).toString();
     res.redirect(`http://localhost:5173/employees?${queryString}`);
   }
 );
 
-// Start the server
+
 app.listen(5000, () => console.log("Server running on port 5000"));

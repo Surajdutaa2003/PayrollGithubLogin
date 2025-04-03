@@ -16,9 +16,8 @@ const Header = () => {
     const id = urlParams.get("id");
     let name = urlParams.get("name");
 
-    // ✅ Filter to remove numbers & special characters, keeping only letters
     if (name) {
-      name = name.replace(/[^a-zA-Z]/g, ""); // ✅ Only letters remain
+      name = name.replace(/[^a-zA-Z]/g, ""); 
     }
 
     if (id && name) {
@@ -48,7 +47,7 @@ const Header = () => {
         </h1>
       </Link>
 
-      {/* Profile Section */}
+      
       <div className={styles.profileSection}>
         <button
           className={styles.profileInfo}
@@ -59,7 +58,7 @@ const Header = () => {
           <span className={styles.userName}>{userName}</span>
         </button>
 
-        {/* Dropdown Menu */}
+      
         {dropdownOpen && (
           <div className={styles.dropdownMenu}>
             <button onClick={handleLogout} className={styles.dropdownItem}>

@@ -19,7 +19,6 @@ class Login extends Component {
   }
 
   componentDidMount() {
-    // Retrieve user data from URL params (GitHub login case)
     setTimeout(() => {
       const urlParams = new URLSearchParams(window.location.search);
       const id = urlParams.get("id");
@@ -31,7 +30,6 @@ class Login extends Component {
         localStorage.setItem("user", JSON.stringify(githubUser));
         this.setState({ user: githubUser });
 
-        // Clean up URL (remove query params)
         window.history.replaceState(null, "", "/employees");
       }
     }, 500);
@@ -59,7 +57,7 @@ class Login extends Component {
   };
 
   handleGitHubLogin = () => {
-    window.location.href = "http://localhost:5000/auth/github"; // Redirect to backend GitHub auth
+    window.location.href = "http://localhost:5000/auth/github"; 
   };
 
   renderAuthSection = () => {
@@ -95,7 +93,6 @@ class Login extends Component {
           data-testid="google-login"
         />
 
-        {/* GitHub Login Button */}
         <Button
           variant="contained"
           startIcon={<FaGithub />}
