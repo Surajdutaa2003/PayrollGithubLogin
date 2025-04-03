@@ -1,0 +1,389 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: auto;
+  font-size: 16px; 
+}
+
+.container {
+  position: relative;
+  background-color: #f5f5f5;
+  min-height: calc(100vh - 3.125rem); 
+  padding: 0;
+  margin-top: 3.125rem;
+  z-index: 1;
+
+  .formContainer {
+    position: relative;
+    max-width: 46.875rem; 
+    width: 90%; 
+    margin: 1.25rem auto; 
+    background-color: #fff;
+    padding: clamp(1rem, 2vw, 1.25rem); 
+    border-radius: 0.5rem;
+    box-shadow: 0 0.125rem 0.625rem rgba(0, 0, 0, 0.1);
+    top: 1.1875rem;
+    right: 0; 
+    z-index: 1;
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9375rem;
+
+      h1 {
+        font-size: clamp(1.25rem, 3vw, 1.5rem); 
+        color: #333;
+        margin: 0 0 1.25rem;
+        text-align: center;
+      }
+
+      .formGroup {
+        display: flex;
+        flex-direction: row; 
+        align-items: center; 
+        gap: 0.625rem;
+
+        label {
+          font-size: 0.875rem;
+          color: #333;
+          font-weight: bold;
+          width: 6.25rem; 
+          padding-top: 0.3125rem;
+        }
+
+        .inputWrapper {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          gap: 0.3125rem;
+          width: 100%; 
+
+          input[type="text"],
+          select,
+          textarea {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 0.25rem;
+            font-size: 0.875rem;
+            color: #333;
+            box-sizing: border-box;
+
+            &::placeholder {
+              color: #999;
+              font-style: italic;
+            }
+
+            &:focus {
+              outline: none;
+              border-color: #007bff;
+              box-shadow: 0 0 0.3125rem rgba(0, 123, 255, 0.3);
+            }
+          }
+
+          textarea {
+            resize: vertical;
+            min-height: 6rem;
+          }
+
+          .profileImages {
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.9375rem;
+            top: 10px;
+
+            .profileImageLabel {
+              display: flex;
+              align-items: center;
+              gap: 0.3125rem;
+
+              input[type="radio"] {
+                width: 1rem;
+                height: 1rem;
+                margin: 0;
+              }
+
+              img {
+                width: clamp(2rem, 5vw, 2.5rem);
+                height: clamp(2rem, 5vw, 2.5rem);
+                border-radius: 50%;
+                object-fit: cover;
+                border: 2px solid transparent;
+                cursor: pointer;
+              }
+
+              input:checked + img {
+                border: 2px solid #007bff;
+              }
+            }
+          }
+
+          .radioGroup {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.25rem;
+
+            label {
+              display: flex;
+              align-items: center;
+              gap: 0.3125rem;
+              font-weight: normal;
+              width: auto;
+
+              input[type="radio"] {
+                margin: 0;
+                width: 1rem;
+                height: 1rem;
+              }
+            }
+          }
+
+          .checkboxGroup {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.25rem;
+
+            label {
+              display: flex;
+              align-items: center;
+              gap: 0.3125rem;
+              font-weight: normal;
+              width: auto;
+
+              input[type="checkbox"] {
+                margin: 0;
+                width: 1rem;
+                height: 1rem;
+              }
+            }
+          }
+
+          select[name="salary"] {
+            width: 9.375rem; 
+          }
+
+          .startDate {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.625rem;
+
+            select {
+              padding: 0.5rem;
+              border: 1px solid #ddd;
+              border-radius: 0.25rem;
+              font-size: 0.875rem;
+              color: #333;
+              width: 6rem; 
+              &:focus {
+                outline: none;
+                border-color: #007bff;
+                box-shadow: 0 0 0.3125rem rgba(0, 123, 255, 0.3);
+              }
+            }
+          }
+        }
+      }
+
+      .buttonContainer {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 1.25rem;
+        gap: 0.625rem;
+
+        .cancelButton {
+          padding: 0.5rem 1rem;
+          background-color: #ccc;
+          color: #333;
+          border: none;
+          border-radius: 0.25rem;
+          font-size: 0.875rem;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+          flex: 0 1 auto; 
+
+          &:hover {
+            background-color: #dc3545;
+            color: #fff;
+          }
+        }
+
+        .rightButtons {
+          display: flex;
+          flex-wrap: nowrap; 
+          gap: 0.625rem;
+          flex: 0 1 auto; 
+          justify-content: flex-end;
+
+          .submitButton,
+          .resetButton {
+            padding: 0.5rem 1rem;
+            background-color: #ccc;
+            color: #333;
+            border: none;
+            border-radius: 0.25rem;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            flex: 0 1 auto;
+
+            &:hover {
+              background-color: #82A70C;
+              color: #fff;
+            }
+          }
+        }
+      }
+
+      .error {
+        color: #dc3545;
+        font-size: 0.75rem;
+        margin-top: 0.3125rem;
+      }
+    }
+  }
+}
+
+.pf {
+  position: relative;
+  top: 0.625rem;
+}
+
+
+@media (max-width: 767px) {
+  .container .formContainer {
+    width: 95%;
+    padding: 1rem;
+    top: 0.625rem;
+  }
+
+  .formGroup {
+    flex-direction: column;
+    align-items: flex-start;
+
+    label {
+      width: 100%;
+    }
+
+    .inputWrapper {
+      .profileImages {
+        flex-wrap: wrap; 
+        flex-direction: column; 
+        width: 100%; 
+        align-items: flex-start; 
+        margin-top: 0.625rem; 
+      }
+
+      .radioGroup {
+        flex-wrap: wrap; 
+        flex-direction: column; 
+        width: 100%; 
+        align-items: flex-start;
+        margin-top: 0.625rem; 
+      }
+
+      .checkboxGroup {
+        flex-wrap: wrap; 
+        flex-direction: column; 
+        width: 100%; 
+        align-items: flex-start; 
+        margin-top: 0.625rem;
+      }
+
+      select[name="salary"] {
+        width: 100%;
+        max-width: 9.375rem;
+      }
+
+      .startDate {
+        flex-wrap: wrap; 
+        flex-direction: column; 
+        width: 100%; 
+        align-items: flex-start; 
+        margin-top: 0.625rem; 
+
+        select {
+          width: 100%;
+          max-width: 6rem;
+        }
+      }
+    }
+  }
+
+  .buttonContainer {
+    flex-wrap: wrap;
+
+    .cancelButton {
+      flex: 1;
+    }
+
+    .rightButtons {
+      flex-wrap: wrap;
+      flex: 2;
+      justify-content: space-between;
+
+      .submitButton,
+      .resetButton {
+        flex: 1;
+      }
+    }
+  }
+}
+
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .container .formContainer {
+    width: 85%;
+  }
+
+  .formGroup {
+    flex-direction: row;
+    align-items: center;
+
+    label {
+      width: 6.25rem;
+    }
+
+    .inputWrapper {
+      select[name="salary"] {
+        width: 100%;
+        max-width: 9.375rem;
+      }
+
+      .startDate {
+        select {
+          width: 100%;
+          max-width: 6rem;
+        }
+      }
+    }
+  }
+
+  .buttonContainer {
+    flex-wrap: wrap;
+
+    .cancelButton {
+      flex: 1;
+    }
+
+    .rightButtons {
+      flex: 2;
+      justify-content: flex-end;
+
+      .submitButton,
+      .resetButton {
+        flex: 1;
+      }
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .container .formContainer {
+    width: 750px; 
+  }
+}

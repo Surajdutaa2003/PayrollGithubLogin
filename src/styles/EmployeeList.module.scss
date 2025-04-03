@@ -1,0 +1,253 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: visible;
+}
+
+.employeeListContainer {
+  position: relative;
+  background-color: #f5f5f5;
+  padding: 0;
+  margin-top: 50px;
+  height: calc(100vh - 50px);
+  overflow-y: auto;
+
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: #F5F5F5; 
+    padding: 15px 20px; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+
+    .details {
+      h2 {
+        position: relative;
+        font-size: 20px; 
+        color: #333;
+        margin: 0;
+        left: 44px;
+      }
+    }
+
+    .headerActions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      position: relative;
+
+      .searchContainer {
+        position: relative;
+        cursor: pointer;
+
+        .searchInput {
+          padding: 6px 30px 6px 10px;
+          border: 1px solid #ddd;
+          border-radius: 50px;
+          font-size: 14px;
+          width: 30px;
+          height: 30px;
+          color: #333;
+          background-color: #fff;
+          transition: width 0.3s ease, padding 0.3s ease;
+          overflow: hidden;
+
+          &::placeholder {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+          }
+
+          &:focus {
+            width: 180px;
+            border-radius: 4px;
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+
+            &::placeholder {
+              opacity: 1;
+            }
+          }
+        }
+
+        .searchIcon {
+          position: absolute;
+          right: 10px;
+          top: 50%;
+          transform: translateY(-50%);
+          color: #666;
+          font-size: 16px;
+          pointer-events: none;
+        }
+      }
+
+      .addButton {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        padding: 6px 12px;
+        background-color: #82A70C;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 4px;
+        font-size: 14px;
+        transition: background-color 0.3s ease;
+        margin-left: auto;
+
+        &:hover {
+          background-color: #218838;
+        }
+
+        .addIcon {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+
+  .employeeTable {
+    width: 90%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 10px;
+
+    thead {
+      background-color: #4a5a6b;
+      color: #fff;
+
+      th {
+        padding: 10px;
+        text-align: left;
+        font-size: 14px;
+        text-transform: uppercase;
+      }
+    }
+
+    tbody {
+      tr {
+        border-bottom: 1px solid #ddd;
+        transition: background-color 0.3s ease;
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        &:hover {
+          background-color: #f9f9f9;
+        }
+
+        td {
+          padding: 10px;
+          font-size: 14px;
+          color: #333;
+
+          .profileImage {
+            position: relative;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            left: 8px;
+          }
+
+          .departmentTag {
+            display: inline-block;
+            background-color: #E9FEA5;
+            color: black;
+            padding: 5px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            margin-right: 5px;
+          }
+
+          .deleteButton,
+          .editButton {
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-size: 16px;
+            margin-right: 10px;
+            transition: color 0.3s ease;
+
+            svg {
+              font-size: 16px;
+            }
+
+            &:hover {
+              &.deleteButton {
+                color: #dc3545;
+              }
+
+              &.editButton {
+                color: #007bff;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+  }
+
+  .headerActions {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+  }
+
+  searchContainer {
+    .searchInput {
+      max-width: 150px;
+      padding-right: 30px; 
+    }
+
+    .searchIcon {
+      right: 10px; 
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+
+  
+  .addButton {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .employeeTable {
+    width: 100%;
+    font-size: 12px;
+
+    thead {
+      th {
+        font-size: 12px;
+      }
+    }
+
+    tbody {
+      tr {
+        td {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}
+// ff
