@@ -124,6 +124,10 @@ test("should show validation errors when form fields are empty", async () => {
   fireEvent.click(screen.getByText("Submit"));
 
   expect(screen.getByText("Employee name is required")).toBeInTheDocument();
+  expect(screen.getByText("Please select at least one department")).toBeInTheDocument();
+expect(screen.getByText("Please select a salary")).toBeInTheDocument();
+expect(screen.getByText("Please select a start day")).toBeInTheDocument();
+
 });
 
    
@@ -160,6 +164,26 @@ test("EmployeeForm Component > should reset profile image on form reset", () => 
   profileImages.forEach((image) => {
     expect(image.checked).toBe(false);
   });
+});
+test("should progressively validate required fields", () => {
+  render(
+    <MemoryRouter>
+      <EmployeeForm />
+    </MemoryRouter>
+  );
+
+  const submitButton = screen.getByRole("button", { name: /submit/i });
+  fireEvent.click(submitButton);
+
+  expect(screen.getByText("Employee name is required")).toBeInTheDocument();
+  expect(screen.getByText("Please select a profile image")).toBeInTheDocument();
+
+  fireEvent.change(screen.getByPlaceholderText("Enter employee name"), {
+    target: { value: "Jane Doe" },
+  });
+  fireEvent.click(submitButton);
+
+  expect(screen.queryByText("Employee name is required")).not.toBeInTheDocument();
 });
 
 

@@ -3,7 +3,9 @@ import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import EmployeeList from "../../component/EmployeeList";
 import axios from "axios";
 import { MemoryRouter } from "react-router-dom";
+import { getEmployees, deleteEmployee } from "../../API/employeeApi";
 
+jest.mock("../../API/employeeApi");
 
 vi.mock("axios");
 
@@ -117,6 +119,16 @@ describe("EmployeeList Component", () => {
     const addButton = screen.getByText(/Add User/i);
     expect(addButton).toBeInTheDocument();
   });
+  
+  test("handles invalid date gracefully", () => {
+    const formattedDate = new EmployeeList().formatDate("invalid-date");
+    expect(formattedDate).toBe("Invalid Date");
+  });
+  test("highlights search matches in text", () => {
+    const result = new EmployeeList().highlightText("John Doe", "John");
+    expect(result.props.children[1].props.className).toContain("highlight");
+  });
+    
   
   
   
