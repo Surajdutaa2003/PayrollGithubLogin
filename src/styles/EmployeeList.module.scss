@@ -43,6 +43,8 @@ body, html {
       .searchContainer {
         position: relative;
         cursor: pointer;
+        right: 45px;
+        top: 2px;
 
         .searchInput {
           padding: 6px 30px 6px 10px;
@@ -55,6 +57,7 @@ body, html {
           background-color: #fff;
           transition: width 0.3s ease, padding 0.3s ease;
           overflow: hidden;
+          cursor: pointer;
 
           &::placeholder {
             opacity: 0;
@@ -86,6 +89,7 @@ body, html {
       }
 
       .addButton {
+        position: relative;
         display: flex;
         align-items: center;
         gap: 5px;
@@ -97,6 +101,8 @@ body, html {
         font-size: 14px;
         transition: background-color 0.3s ease;
         margin-left: auto;
+        right: 45px;
+        top: 4px;
 
         &:hover {
           background-color: #218838;

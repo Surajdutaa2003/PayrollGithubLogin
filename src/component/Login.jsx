@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
 import { Button, Typography, Container, Box } from "@mui/material";
-import { FaGithub } from "react-icons/fa"; // GitHub Icon
+import { FaGithub } from "react-icons/fa";
 
 import "../styles/Login.scss";
 import Footer from "./Footer";
@@ -15,6 +15,7 @@ class Login extends Component {
     this.state = {
       user: null,
       isLoading: false,
+      githubLoading: false,
     };
   }
 
@@ -57,11 +58,15 @@ class Login extends Component {
   };
 
   handleGitHubLogin = () => {
-    window.location.href = "http://localhost:5000/auth/github"; 
+    this.setState({ githubLoading: true });
+
+    setTimeout(() => {
+      window.location.href = "http://localhost:5000/auth/github";
+    }, 500); // Give time for animation to show
   };
 
   renderAuthSection = () => {
-    const { isLoading, user } = this.state;
+    const { isLoading, user, githubLoading } = this.state;
 
     if (isLoading) {
       return <div className="spinner"></div>;
@@ -95,11 +100,12 @@ class Login extends Component {
 
         <Button
           variant="contained"
-          startIcon={<FaGithub />}
-          className="github-login-button"
+          startIcon={!githubLoading && <FaGithub />}
+          className={`github-login-button ${githubLoading ? "loading" : ""}`}
           onClick={this.handleGitHubLogin}
         >
-          Sign in with GitHub
+          <span className="btn-text">Sign in with GitHub</span>
+          <div className="loader"></div>
         </Button>
       </div>
     );
@@ -111,7 +117,8 @@ class Login extends Component {
         <Container maxWidth="sm" className="login-container">
           <Box className="login-box">
             <Typography variant="h4" gutterBottom className="login-title">
-              Employee Payroll
+              <span className="green-text">Employee</span>{" "}
+              <span className="black-text">Payroll</span>
             </Typography>
             <Typography variant="subtitle1" className="login-subtitle">
               Sign in to manage your payroll
@@ -127,4 +134,3 @@ class Login extends Component {
 }
 
 export default Login;
-// ss

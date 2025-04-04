@@ -5,9 +5,9 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: linear-gradient(135deg, #28a745, #218838); 
   padding: 20px;
   font-family: "Poppins", sans-serif;
+  background: #f4f4f4;
 }
 
 .login-box {
@@ -20,7 +20,7 @@
   text-align: center;
   max-width: 400px;
   width: 100%;
-  animation: fadeIn 0.5s ease-in-out;
+  animation: fadeIn 0.5s ease-in-out, float 3s ease-in-out infinite;
 
   .login-title {
     font-size: 2rem;
@@ -32,11 +32,10 @@
 
   .login-subtitle {
     font-size: 1rem;
-    color: #e0e0e0;
+    color: #3b3a3a81;
     margin-bottom: 30px;
   }
 
-  
   .spinner {
     width: 40px;
     height: 40px;
@@ -47,7 +46,6 @@
     margin: 0 auto;
   }
 
- 
   .welcome-section {
     animation: fadeIn 0.5s ease-in-out;
 
@@ -78,7 +76,7 @@
   }
 }
 
-
+/* Google Login Button */
 .google-login-button {
   display: inline-block;
   background: #fff;
@@ -86,6 +84,7 @@
   padding: 10px 20px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
+  cursor: pointer;
 
   &:hover {
     transform: translateY(-2px);
@@ -100,11 +99,81 @@
   span {
     font-family: "Poppins", sans-serif !important;
     font-weight: 500 !important;
-    color: #28a745 !important; 
+    color: #28a745 !important;
   }
 }
 
+/* GitHub Login Button with Loader */
+.github-login-button {
+  position: relative;
+  width: 100%;
+  background-color: #000 !important;
+  color: #fff;
+  padding: 10px;
+  border-radius: 25px;
+  margin-top: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  top: 10px;
+  overflow: hidden;
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    background-color: #333;
+  }
+
+  &.loading {
+    pointer-events: none;
+    opacity: 0.7;
+  }
+
+  .btn-text {
+    display: inline-block;
+  }
+
+  .loader {
+    display: none;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top: 3px solid #fff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-left: 10px;
+  }
+
+  &.loading {
+    .btn-text {
+      display: none;
+    }
+
+    .loader {
+      display: inline-block;
+    }
+  }
+}
+
+/* Footer */
+.footer {
+  margin-top: auto;
+  width: 100%;
+  text-align: center;
+  padding: 1rem;
+  background-color: #f4f4f4;
+}
+
+/* Utility classes */
+.green-text {
+  color: #28a745;
+}
+.black-text {
+  color: #000;
+}
+
+/* Animations */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -124,10 +193,68 @@
     transform: rotate(360deg);
   }
 }
-.footer {
-  margin-top: auto;
-  width: 100%;
-  text-align: center;
-  padding: 1rem;
-  background-color: #f4f4f4;
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .login-box {
+    padding: 30px;
+    max-width: 90%;
+  }
+
+  .login-title {
+    font-size: 1.8rem;
+  }
+
+  .login-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .welcome-section .welcome-text {
+    font-size: 1rem;
+  }
+
+  .logout-button,
+  .google-login-button,
+  .github-login-button {
+    font-size: 0.9rem;
+    padding: 8px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-box {
+    padding: 20px;
+    max-width: 95%;
+  }
+
+  .login-title {
+    font-size: 1.5rem;
+  }
+
+  .login-subtitle {
+    font-size: 0.8rem;
+  }
+
+  .welcome-section .welcome-text {
+    font-size: 0.9rem;
+  }
+
+  .logout-button,
+  .google-login-button,
+  .github-login-button {
+    font-size: 0.8rem;
+    padding: 6px 12px;
+  }
 }
