@@ -5,13 +5,12 @@ import Login from "../../component/Login";
 import { jwtDecode } from "jwt-decode";
 import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 
-// Mock react-router-dom for navigate
+
 jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"),
-  useNavigate: jest.fn(() => jest.fn()), // Mock navigate as a function returning a mock function
+  useNavigate: jest.fn(() => jest.fn()), 
 }));
 
-// Mock @react-oauth/google
 jest.mock("@react-oauth/google", () => ({
   GoogleOAuthProvider: ({ children }) => <div>{children}</div>,
   GoogleLogin: jest.fn(({ onSuccess }) => (
@@ -24,16 +23,14 @@ jest.mock("@react-oauth/google", () => ({
   )),
 }));
 
-// Mock jwt-decode
 jest.mock("jwt-decode", () => jest.fn());
 
-// Mock window.location.href assignment
 Object.defineProperty(window, "location", {
   value: { href: "", search: "" },
   writable: true,
 });
 
-// Mock the logo import (assuming Header uses it)
+
 jest.mock("../../assets/logo.jpeg", () => "mocked-logo-path");
 
 describe("Header Component", () => {
@@ -150,6 +147,7 @@ describe("Header Component - GitHub Login", () => {
       expect(window.location.href).toBe("http://localhost:5000/auth/github");
     });
   });
-
+ 
  
 });  
+// ss
